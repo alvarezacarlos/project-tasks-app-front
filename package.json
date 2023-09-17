@@ -1,0 +1,18 @@
+{
+  "name": "gestor-de-tareas-front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "alvarezalbertocarlos <alvaalbertocarlos@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

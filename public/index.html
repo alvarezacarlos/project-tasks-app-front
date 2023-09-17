@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Tareas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="menu.css" />
+    <link rel="stylesheet" href="section.css" />
+    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="submenu.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <nav class="nav-menu">
+          <input type="checkbox" id="check" />
+          <label for="check" class="checklabel">
+            <i class="fas fa-bars"></i>
+          </label>
+          <h1 class="menu-title">Todos</h1>
+          <ul class="menu-list">
+            <li class="menu-list-items responsive">
+              <a class="active menu-items" href="#">My todos</a>
+            </li>
+            <li class="menu-list-items responsive">
+              <a class="menu-items" href="#">Assigned to me</a>
+            </li>
+            <li class="menu-list-items responsive">
+              <a class="menu-items" href="#">Deleted</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="submenu">
+        <nav class="submenu-nav">
+          <ul class="submenu-list">
+            <li class="submenu-list-items">                            
+                <a id="submenuForm" class="submenu-items" href="#">Form</a>              
+            </li>
+            <li class="submenu-list-items">
+              <a id="submenuPending" class="submenu-items" href="#">Pending</a>
+            </li>
+            <li class="submenu-list-items">
+              <a id="submenuInprogress" class="submenu-items" href="#"
+                >InProgress</a
+              >
+            </li>
+            <li class="submenu-list-items">
+              <a id="submenuDone" class="submenu-items" href="#">Done</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <section class="section">
+        
+        <div id="formContainer" class="form-container drag-drop-container">
+          <div class="form">
+            <div class="section-title">
+              <p>Create a Todo</p>
+            </div>
+            <div id="myForm">
+              <div class="form-task-title">
+                <label for="form-task-title">Title</label>
+                <input type="text" id="form-task-title" />
+              </div>
+              <div class="form-task-desc">
+                <label for="form-task-desc">Description</label>
+                <input type="text" id="form-task-desc" />
+              </div>
+              <div class="form-task-dev">
+                <label for="form-task-dev">Developer</label>
+                <input type="text" id="form-task-dev" />
+              </div>
+              <div class="form-task-enddate">
+                <label for="form-task-enddate">Due Date</label>
+                <input type="text" id="form-task-enddate" />
+              </div>
+              <div class="form-task-button">
+                <button id="create-task-button">Create</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div id="pending" class="pending drag-drop-container">
+          <div class="section-title">
+            <p>Pending</p>
+          </div>
+        </div>
+
+        <div id="inprogress" class="inprogress drag-drop-container">
+          <div class="section-title">
+            <p>In Progress</p>
+          </div>
+        </div>
+
+        <div id="done" class="done drag-drop-container">
+          <div class="section-title">
+            <p>Done</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
