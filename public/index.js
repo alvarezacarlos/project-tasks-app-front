@@ -42,6 +42,40 @@ const TASK_STATUS = {
 
 let draggedTaskId, draggedFromContainerId, draggedToContainerId;
 
+
+const updateTaskFromButtonClick = ({ ...params }) => {  
+  params.list.forEach(button => {
+    button.addEventListener('click', e => {      
+      const clickedTaskId = e.target.id      
+      const clickedTask = document.getElementById(clickedTaskId)
+      taskItem = tasks.find(task => task._id === clickedTaskId)
+      taskItem.status = params.status.toLowerCase()
+      const draggedToContainer = document.getElementById(taskItem.status)    
+
+      draggedToContainer.insertAdjacentElement('beforeend',clickedTask)
+
+      const statusContainer = clickedTask.children[1]
+      statusContainer.innerHTML = `<p><strong>Status: </strong>${taskItem.status}</p>`     
+
+    })
+  })
+}
+
+const initTaskButton = () => {
+  // task-button-pending
+  // task-button-inprogress
+  // task-button-done
+  const pendingButtonsList = document.querySelectorAll('.task-button-pending')
+  updateTaskFromButtonClick({ status: TASK_STATUS.PENDING, list: pendingButtonsList })
+
+  const inprogressButtonsList = document.querySelectorAll('.task-button-inprogress')
+  updateTaskFromButtonClick({ status: TASK_STATUS.INPROGRESS, list: inprogressButtonsList })
+
+  const doneButtonsList = document.querySelectorAll('.task-button-done')
+  updateTaskFromButtonClick({ status: TASK_STATUS.DONE, list: doneButtonsList })
+}
+
+
 const parseFromString = (stringElem) => {
   const parser = new DOMParser();
   const parsedDocument = parser.parseFromString(stringElem, "text/html");
@@ -82,9 +116,9 @@ const createTaskItem = (taskItem) => {
         <div class="end-date"><strong>Due: </strong> ${taskItem.endDate}</div>
       </div>  
       <div class="task-buttons">
-          <button class="task-button-pending">Pending</button>       
-          <button class="task-button-inprogress">In Progress</button>        
-          <button class="task-button-done">Done</button>
+          <button id=${taskItem._id} class="task-button-pending">Pending</button>       
+          <button id=${taskItem._id} class="task-button-inprogress">In Progress</button>        
+          <button id=${taskItem._id} class="task-button-done">Done</button>
       </div>
     </div>          
   `);
@@ -128,6 +162,7 @@ const tasksFetch = async () => {
     // console.log(fetchedTasksJSON.data);
     tasks = fetchedTasksJSON.data;
     toogleTasksRender();
+    initTaskButton()
   } catch (err) {
     console.log(err);
   }
