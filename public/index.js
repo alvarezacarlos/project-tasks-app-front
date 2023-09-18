@@ -43,10 +43,47 @@ const TASK_STATUS = {
 let draggedTaskId, draggedFromContainerId, draggedToContainerId;
 
 
+const updateCardsButtonsDisplay = () => {
+  const pendingButtonsList = document.querySelectorAll('.task-button-pending')
+  const inprogressButtonsList = document.querySelectorAll('.task-button-inprogress')
+  const doneButtonsList = document.querySelectorAll('.task-button-done')
+
+  pendingButtonsList.forEach(button => {
+    const task = tasks.find(task => task._id === button.getAttribute('data-id'))
+    if (task.status.toUpperCase() === TASK_STATUS.PENDING) {
+      button.style.display = 'none'
+    }else {
+      button.style.display = 'block'
+    }
+ 
+  })
+
+  inprogressButtonsList.forEach(button => {
+    const task = tasks.find(task => task._id === button.getAttribute('data-id'))
+    if (task.status.toUpperCase() === TASK_STATUS.INPROGRESS) {
+      button.style.display = 'none'
+    }else {
+      button.style.display = 'block'
+    }
+ 
+  })
+
+  doneButtonsList.forEach(button => {
+    const task = tasks.find(task => task._id === button.getAttribute('data-id'))
+    if (task.status.toUpperCase() === TASK_STATUS.DONE) {
+      button.style.display = 'none'
+    }else {
+      button.style.display = 'block'
+    }
+ 
+  })
+  
+}
+
 const updateTaskFromButtonClick = ({ ...params }) => {  
   params.list.forEach(button => {
     button.addEventListener('click', e => {      
-      const clickedTaskId = e.target.id      
+      const clickedTaskId = e.target.getAttribute('data-id')      
       const clickedTask = document.getElementById(clickedTaskId)
       taskItem = tasks.find(task => task._id === clickedTaskId)
       taskItem.status = params.status.toLowerCase()
@@ -57,6 +94,7 @@ const updateTaskFromButtonClick = ({ ...params }) => {
       const statusContainer = clickedTask.children[1]
       statusContainer.innerHTML = `<p><strong>Status: </strong>${taskItem.status}</p>`     
 
+      updateCardsButtonsDisplay()
     })
   })
 }
@@ -73,6 +111,7 @@ const initTaskButton = () => {
 
   const doneButtonsList = document.querySelectorAll('.task-button-done')
   updateTaskFromButtonClick({ status: TASK_STATUS.DONE, list: doneButtonsList })
+
 }
 
 
@@ -116,9 +155,9 @@ const createTaskItem = (taskItem) => {
         <div class="end-date"><strong>Due: </strong> ${taskItem.endDate}</div>
       </div>  
       <div class="task-buttons">
-          <button id=${taskItem._id} class="task-button-pending">Pending</button>       
-          <button id=${taskItem._id} class="task-button-inprogress">In Progress</button>        
-          <button id=${taskItem._id} class="task-button-done">Done</button>
+          <button data-id=${taskItem._id} class="hidden task-button-pending">Pending</button>       
+          <button data-id=${taskItem._id} class="hidden task-button-inprogress">In Progress</button>        
+          <button data-id=${taskItem._id} class="hidden task-button-done">Done</button>
       </div>
     </div>          
   `);
@@ -163,6 +202,7 @@ const tasksFetch = async () => {
     tasks = fetchedTasksJSON.data;
     toogleTasksRender();
     initTaskButton()
+    updateCardsButtonsDisplay()    
   } catch (err) {
     console.log(err);
   }
@@ -211,6 +251,7 @@ const handleFormSubmit = () => {
     };
 
     createFormTask({ formTask, inputTitle, inputDesc, inputDev, inputendDate });
+    updateCardsButtonsDisplay()
   } else {
     alert("Please fill all the fields!");
   }
@@ -285,6 +326,8 @@ const setContinerDragAndDrop = () => {
         const tasksContiner = document.getElementById(draggedToContainerId);
         tasksContiner.insertAdjacentElement("beforeend", tasksHTML);
       }
+
+      updateCardsButtonsDisplay()
     });
   });
 };

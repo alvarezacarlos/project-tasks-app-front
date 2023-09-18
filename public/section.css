@@ -172,3 +172,7 @@
   background-color: #0254643c;
   border: 0;
 }
+
+.hidden{
+  display: none;
+}
