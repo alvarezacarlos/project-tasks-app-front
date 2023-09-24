@@ -119,10 +119,14 @@
   .toggle-form-label{
     display: none;
   }  
+
+  .section{
+    width: 50% !important;
+  }
 }
 
 /* media query for 858px */
-@media (max-width: 858px) {
+@media (max-width: 480px) {
   .menu-title {
     display: block;
     text-align: left;
@@ -162,4 +166,13 @@
   #check:checked ~ .menu-list {
     left: 0%;
   }
+
+  .section{
+    width: 100% !important;    
+  }
+}
+
+
+#dummy-company{
+  text-align: center;
 }

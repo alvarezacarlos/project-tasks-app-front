@@ -1,11 +1,13 @@
 .section {
   margin: 0 auto;
   margin-top: 14px;
+  margin-bottom: 14px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  width: 70%;
-
+  width: 90%;
+  padding: 8px;
+  height: 100vh;
   /* background-color:darkcyan; */
   /* align-self: stretch; */
 }
@@ -13,11 +15,16 @@
 .pending,
 .inprogress,
 .done,
-.form-container{
+.form-container {
   flex: 1 1 auto;
   padding: 4px;
 }
 
+.pending,
+.inprogress,
+.done{
+  min-height: 60vh;  
+}
 
 .form-container {
   display: flex;
@@ -40,7 +47,7 @@
 
 #toggle-form-checkbox:checked ~ .form-container {
   padding-left: 20px;
-  padding-top: 12px;  
+  padding-top: 12px;
 }
 /* 
 @-webkit-keyframes slide-down {
@@ -133,10 +140,11 @@
   background-color: #fff;
   color: #900c3f;
   border-radius: 8px;
-  border: solid 0;  
+  border: solid 0;
   border: 0.2px solid #900c3f;
   margin-top: 15px;
   padding: 8px;
+  cursor: pointer;
 }
 .task-button-pending:hover {
   background-color: #e748854c;
@@ -148,10 +156,11 @@
   background-color: #fff;
   color: #e57c23;
   border-radius: 8px;
-  border: solid 0;  
+  border: solid 0;
   border: 0.2px solid #e57c23;
   margin-top: 15px;
   padding: 8px;
+  cursor: pointer;
 }
 .task-button-inprogress:hover {
   background-color: #e8863132;
@@ -163,16 +172,43 @@
   background-color: #fff;
   color: #0254649d;
   border-radius: 8px;
-  border: solid 0;  
+  border: solid 0;
   border: 0.2px solid #0254649d;
   margin-top: 15px;
   padding: 8px;
+  cursor: pointer;
 }
 .task-button-done:hover {
   background-color: #0254643c;
   border: 0;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+.task-button-delete {
+  font-weight: 900;
+  background-color: #fff;
+  color: #982503;
+  border-radius: 8px;
+  border: solid 0;
+  border: 0.2px solid #982503;
+  margin-top: 15px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.task-button-delete:hover {
+  background-color: #98260323;
+  border: 0;
+}
+
+.bttn-container {
+  /* align-self: center; */
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }

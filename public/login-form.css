@@ -1,0 +1,76 @@
+.form-main{    
+    padding: 4px;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+}
+
+
+.login-form{
+    height: 50vh;    
+    width: 25vw;    
+    display: flex;
+    flex-flow: column nowrap;    
+    justify-content: space-evenly;
+    background-color:#fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-form input , .login-form button{
+    padding: 12px;
+    border-radius: 12px;
+    border: solid 0;
+    background-color: #eee;
+    outline: none;
+}
+
+.btn, .signup-btn{
+    align-self: center;
+    width: 40%;    
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin-top: 14px;   
+}
+
+.nav-auth{
+    align-self: center;
+    width: 40%;        
+    transition: color 0.2s ease;
+    margin-top: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nav-auth:hover{
+    color: #142f35ef;
+    text-decoration: underline;
+}
+
+.btn:hover{
+    background-color: gainsboro;        
+}
+
+.form-title{    
+    font-size: 1.5rem;
+    align-self: center;
+}
+
+
+@media (max-width: 952px) {
+    .login-form{
+        width: 40vw;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form{
+        width: 80vw;
+    }
+}
+

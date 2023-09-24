@@ -8,14 +8,54 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link rel="stylesheet" href="login-form.css" />
     <link rel="stylesheet" href="menu.css" />
     <link rel="stylesheet" href="section.css" />
     <link rel="stylesheet" href="form.css" />
     <link rel="stylesheet" href="submenu.css" />
-    <script src="index.js" defer></script>
+    <script src="index.js" defer></script>    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>    
   </head>
   <body>
-    <div id="app">
+    <div id="app"></div>
+
+    <template id="auth-login-template">
+      <div class="form-main">
+        <form id="login-form" class="login-form" action="">
+          <p class="form-title">Sign in</p>
+          <label for="username">Username</label>
+          <input id="username" type="text" placeholder="Username" required />
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" required />
+          <div class="bttn-container">
+            <button class="btn">Sign In</button>
+            <a id="nav-to-signup" class="nav-auth">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="auth-signup-template">
+      <div class="form-main">
+        <form id="login-form" class="login-form" action="">
+          <p class="form-title">Sign up</p>
+          <label for="signup-username">Username</label>
+          <input id="signup-username" type="text" placeholder="Username" required />
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" placeholder="Password" required />
+          <label for="company-code">Company Code</label>
+          <input id="company-code"  placeholder="Code" required />
+          <a id="dummy-company"><i>Try Company Dummy code: <strong>DM</strong></i></a>
+          <div class="bttn-container">
+            <button class="signup-btn">Sign up</button>
+            <a id="nav-to-signin" class="nav-auth">Sign in</a>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="main-template">
       <header>
         <nav class="nav-menu">
           <input type="checkbox" id="check" />
@@ -31,7 +71,7 @@
               <a class="menu-items" href="#">Assigned to me</a>
             </li>
             <li class="menu-list-items responsive">
-              <a class="menu-items" href="#">Deleted</a>
+              <a class="menu-items" id="logout" href="#">Logout</a>
             </li>
           </ul>
         </nav>
@@ -39,8 +79,8 @@
       <div class="submenu">
         <nav class="submenu-nav">
           <ul class="submenu-list">
-            <li class="submenu-list-items">                            
-                <a id="submenuForm" class="submenu-items" href="#">Form</a>              
+            <li class="submenu-list-items">
+              <a id="submenuForm" class="submenu-items" href="#">Form</a>
             </li>
             <li class="submenu-list-items">
               <a id="submenuPending" class="submenu-items" href="#">Pending</a>
@@ -57,7 +97,6 @@
         </nav>
       </div>
       <section class="section">
-        
         <div id="formContainer" class="form-container drag-drop-container">
           <div class="form">
             <div class="section-title">
@@ -78,14 +117,14 @@
               </div>
               <div class="form-task-enddate">
                 <label for="form-task-enddate">Due Date</label>
-                <input type="text" id="form-task-enddate" />
+                <!-- <input type="text" id="form-task-enddate" /> -->
+                <input type="date" id="form-task-enddate" />
               </div>
               <div class="form-task-button">
                 <button id="create-task-button">Create</button>
               </div>
             </div>
           </div>
-          
         </div>
 
         <div id="pending" class="pending drag-drop-container">
@@ -106,6 +145,6 @@
           </div>
         </div>
       </section>
-    </div>
+    </template>
   </body>
 </html>
