@@ -30,9 +30,9 @@
 
 let tasks = [];
 
-const API_URL = "http://localhost:7000";
+// const API_URL = "http://localhost:7000";
 
-// const API_URL = "https://gestor-de-tareas-back.onrender.com";
+const API_URL = "https://gestor-de-tareas-back.onrender.com";
 
 const TASK_STATUS = {
   PENDING: "PENDING",
