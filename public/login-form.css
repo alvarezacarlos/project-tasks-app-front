@@ -8,6 +8,11 @@
     background-color: #eee;
 }
 
+.signup-form{
+    background-color: red;
+    height: 80vh !important;
+}
+
 
 .login-form{
     height: 50vh;    
@@ -21,7 +26,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.login-form input , .login-form button{
+.login-form input , .login-form button, 
+.signup-form input , .signup-form button{
     padding: 12px;
     border-radius: 12px;
     border: solid 0;
