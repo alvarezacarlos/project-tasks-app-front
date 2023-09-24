@@ -72,11 +72,18 @@
         width: 40vw;
         height: 40vh;
     }
+    .signup-form{
+        height: 95vh !important;
+    }
 }
 
 @media (max-width: 480px) {
     .login-form{
         width: 80vw;
+        
+    }
+    .signup-form{
+        height: 95vh !important;
     }
 }
 
