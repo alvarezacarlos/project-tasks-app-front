@@ -79,11 +79,11 @@
 
 @media (max-width: 480px) {
     .login-form{
-        width: 80vw;
+        width: 60vw;
         
     }
     .signup-form{
-        height: 95vh !important;
+        height: 60vh !important;
     }
 }
 
